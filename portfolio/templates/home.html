@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% load static %}
+<header class="row bg-black">
+  <div class="col-md-4">
+    <img src="{% static 'portfolio/profile1.jpeg' %}" class="img-fluid rounded-circle" alt="Javier Palma">
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1>Estudiante  <strong> Javier Palma</strong></h1>
+        <h3>4 semestre en tecnologia de la información</h3>
+        <p>
+            Albert Einstein 
+            "Nunca consideres el estudio como una obligación, sino como una oportunidad de penetrar en el maravilloso mundo del conocimiento del mundo y el universo"
+            
+            "Si buscas resultados distintos no hagas siempre lo mismo"
+        </p>
+        <a href="{% static 'portfolio/ACTIVIDAD1.pdf'%}" class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
+    </div>
+</header class="row">
+
+<div class="row my-4 text-center">
+
+    <h3>Mis proyectos</h3>
+    <p>A continuación </p>
+  
+    {% for project in projects %}
+    <div class="col-md-4 p-4">
+      <div class="card bg-black card-project">
+        <img src="{{project.image.url }}" class="card-img-top" />
+  
+        <div class="card-body">
+  
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.description }}</p>
+  
+          {% if project.url %}
+          <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Visit the
+            Project</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  
+  {% endblock %}
